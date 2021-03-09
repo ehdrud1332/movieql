@@ -7,6 +7,7 @@
   "author": "castlejaemin",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "3",
     "graphql-yoga": "^1.18.3",
     "node-fetch": "^2.6.1"

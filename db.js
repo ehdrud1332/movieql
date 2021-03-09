@@ -1,98 +1,17 @@
-//Resolver 는 query를 resolve(해결) 한다.
-<<<<<<< HEAD
-const movies = [
-    {
-        id: 0,
-        name: 'Star Wars - The new one',
-=======
-let movies = [
-    {
-        id: 0,
-        name: "Star Wars = The new one",
->>>>>>> master
-        score: 1
-    },
-    {
-        id: 1,
-<<<<<<< HEAD
-        name: 'Avengers',
-        score: 23
-    },
-    {
-        id: 2,
-        name: 'The Godfater I',
-        score: 34
-    },
-    {
-        id: 3,
-        name: 'Logan',
-        score: 5
-    }
-=======
-        name: "Avengers - The new one",
-        score: 8
-    },
-    {
-        id: 2,
-        name: "The Godfather I",
-        score: 99
-    },
-    {
-        id: 3,
-        name: "Logan",
-        score: 2
-    },
->>>>>>> master
-];
+// 내 서버와 다른 URL을 통합하고 싶을 때의 예시.
+import fetch from "node-fetch";
 
-export const getMovies = () => movies;
+const API_URL = "https://yts.mx/api/v2/list_movies.json?";
 
-export const getById = id => {
-    // filter는 모든 대상을 거친 뒤 해당 조건에 맞는 걸 return 한다.
-<<<<<<< HEAD
-    const filteredMovies = movies.filter(movie => movie.id === id);
-    return filteredMovies[0];
+export const getMovies = (limit, rating) => {
+  let REQUEST_URL = API_URL;
+  if (limit > 0) {
+    REQUEST_URL += `limit=${limit}`;
+  }
+  if (rating > 0) {
+    REQUEST_URL += `&minimum_ration=${rating}`;
+  }
+  return fetch(REQUEST_URL)
+    .then((res) => res.json())
+    .then((json) => json.data.movies);
 };
-
-export const deleteMovie = id => {
-    const cleanedMovies = movies.filter(movie => movie.id !== id);
-    if(movies.length > cleanedMovies.length) {
-        movies = cleanedMovies;
-=======
-    const filteredPeople = movies.filter(movie => movie.id === String(id));
-    return filteredPeople[0];
-};
-
-export const deleteMovie = id => {
-    const cleanedMovies = movies.filter(movie => movie.id !== String(id))
-    if(movies.length > cleanedMovies.length) {
-        movie = cleanedMovies;
->>>>>>> master
-        return true;
-    } else {
-        return false;
-    }
-};
-
-<<<<<<< HEAD
-
-export const addMovie = (name, score) => {
-    const newMovie = {
-        id: movies.length + 1,
-=======
-export const addMovie = (name, score) => {
-    const newMovie = {
-        id: `${movies.length + 1}`,
->>>>>>> master
-        name,
-        score
-    };
-    movies.push(newMovie);
-    return newMovie;
-};
-
-<<<<<<< HEAD
-
-=======
->>>>>>> master
-
